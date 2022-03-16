@@ -5,7 +5,7 @@
 
 
 std::vector<float> input_current_readings  = {3, 3, 5, 4, 10, 11, 12};
-std::vector<float> input_current_readings2 = {3, 3, 5, 4, 10, 110, 12};
+std::vector<float> input_current_readings2 = {3, 3, 3, 4, 10, 110, 12};
 Sensor mysensorObject(input_current_readings);
 
 TEST_CASE("Check if a dangerous current is read"){
