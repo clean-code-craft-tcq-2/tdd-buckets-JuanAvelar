@@ -1,0 +1,7 @@
+testchecker
+*.gcda
+*.gcno
+*.gcov
+*.info
+*.html
+bin/
