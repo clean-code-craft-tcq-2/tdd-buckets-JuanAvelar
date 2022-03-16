@@ -3,6 +3,7 @@
 #include "test/catch.hpp"
 #include "TestDrivenRanges.hpp"
 
+
 std::vector<float> input_current_readings  = {3, 3, 5, 4, 10, 11, 12};
 std::vector<float> input_current_readings2 = {3, 3, 5, 4, 10, 110, 12};
 Sensor mysensorObject(input_current_readings);
@@ -31,4 +32,20 @@ TEST_CASE("Check output algorithm working correctly"){
       REQUIRE(data.at(dataset).at(second_dataset) == howDataShouldLook.at(dataset).at(second_dataset));
     }
   }
+}
+
+TEST_CASE("Check printed data to file is correct"){
+  std::ostringstream streambuffer;
+  //when not a testcase you can probably pass a file stream buffer to the function
+  //and it should automatically write the file
+  /*LIKE:
+    std::ofstream file;
+    file.open("myfile.csv")
+    mysensorObject.print_data_processed_to_file(file.rdbuf());
+  */
+  mysensorObject.print_data_processed_to_file(streambuffer.rdbuf());
+  std::string streamoutput = streambuffer.str();
+  std::string HowstreamShouldLook = "Range, Readings\n3-5, 4\n10-12, 3\n";
+  REQUIRE(streamoutput == HowstreamShouldLook);
+
 }

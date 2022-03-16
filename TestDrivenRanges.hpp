@@ -2,7 +2,7 @@
 #define TEST_DRIVEN_RANGES_HPP
 
 #include <vector>
-
+#include <iostream>
 #define FAILURE true
 #define NO_FAILURE false
 #define DANGEROUS true
@@ -21,6 +21,7 @@ public:
   int check_Ampere_limits(void);
   bool check_redundancy_failure(Sensor otherSensor);
   OutputData process_data(void);
+  void print_data_processed_to_file(std::streambuf* streamoutput);
 };
 
 
